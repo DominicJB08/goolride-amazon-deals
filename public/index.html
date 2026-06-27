@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Daily Amazon tech deal links for TikTok viewers.">
+  <title>Dominic's Daily Amazon Deals</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --surface-soft: #f8fafb;
+      --text: #141414;
+      --muted: #64707d;
+      --border: #dde3e8;
+      --orange: #ff9900;
+      --orange-dark: #c85f00;
+      --teal: #0b8a83;
+      --teal-soft: #e5f6f4;
+      --shadow: 0 18px 48px rgba(20, 20, 20, .10);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, #ffffff 0, var(--bg) 360px, #edf2f5 100%);
+      color: var(--text);
+      letter-spacing: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 18px 14px 28px;
+    }
+
+    .shell {
+      display: grid;
+      gap: 14px;
+    }
+
+    .shell > * {
+      min-width: 0;
+    }
+
+    .hero-image {
+      position: relative;
+      min-height: 196px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #eef2f4;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.78);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 196px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .profile {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 12px 28px rgba(20, 20, 20, .07);
+    }
+
+    .profile-top {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .profile-top > div {
+      min-width: 0;
+    }
+
+    .mark {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      color: #111;
+      background: linear-gradient(135deg, var(--orange), #ffd166 58%, var(--teal));
+      font-size: 20px;
+      font-weight: 900;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(29px, 8vw, 43px);
+      line-height: .98;
+      font-weight: 850;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .subtitle {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      border-radius: var(--radius);
+      padding: 10px;
+      min-width: 0;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+      text-transform: uppercase;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 10px 0;
+      background: rgba(244,246,248,.92);
+      backdrop-filter: blur(14px);
+      min-width: 0;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      overflow: visible;
+      padding: 1px 2px 3px;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .chip {
+      flex: 0 0 auto;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: var(--radius);
+      padding: 9px 10px;
+      font: 800 13px/1 var(--font, inherit);
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(20,20,20,.04);
+    }
+
+    .chip span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .chip[aria-pressed="true"] {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .chip[aria-pressed="true"] span { color: #ffcc70; }
+
+    .summary {
+      background: #111;
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .summary h2 {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #ccd3d8;
+      font-size: 13px;
+    }
+
+    .summary-row strong { color: #fff; white-space: nowrap; }
+
+    .deal-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .list-status {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 0 2px;
+    }
+
+    .list-status strong { color: var(--text); }
+
+    .deal-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "index copy"
+        "price price"
+        "button button";
+      gap: 11px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 13px;
+      box-shadow: 0 8px 24px rgba(20,20,20,.055);
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+
+    .deal-card:hover,
+    .deal-card:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(255,153,0,.85);
+      box-shadow: 0 14px 32px rgba(20,20,20,.10);
+      outline: none;
+    }
+
+    .deal-index {
+      grid-area: index;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-weight: 900;
+      font-size: 13px;
+      border: 1px solid rgba(11,138,131,.17);
+    }
+
+    .deal-copy {
+      grid-area: copy;
+      min-width: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .deal-category {
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .deal-copy strong {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-size: 15px;
+      line-height: 1.22;
+      font-weight: 850;
+    }
+
+    .deal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .deal-signal {
+      color: #805100;
+      background: #fff7e4;
+      border: 1px solid #ffe0a6;
+      border-radius: var(--radius);
+      padding: 5px 7px;
+      width: fit-content;
+      max-width: 100%;
+      font-size: 11px;
+      font-weight: 850;
+      line-height: 1.2;
+    }
+
+    .price-block {
+      grid-area: price;
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      gap: 8px;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 11px;
+      min-width: 0;
+    }
+
+    .price {
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 920;
+    }
+
+    .discount {
+      color: #fff;
+      background: var(--orange-dark);
+      border-radius: var(--radius);
+      padding: 5px 7px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .before {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .open-button {
+      grid-area: button;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: var(--radius);
+      background: var(--orange);
+      color: #111;
+      font-size: 14px;
+      font-weight: 900;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .open-button svg { width: 17px; height: 17px; flex: 0 0 auto; }
+
+    .deal-card[hidden] { display: none; }
+
+    .footer-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      padding: 14px;
+    }
+
+    @media (min-width: 680px) {
+      .page { padding: 28px 18px 36px; }
+      .hero-image, .hero-image img { min-height: 254px; }
+      .profile { padding: 22px; }
+      .deal-card {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-areas:
+          "index copy price"
+          "index copy button";
+        align-items: start;
+        padding: 15px;
+      }
+      .price-block {
+        border-top: 0;
+        padding-top: 0;
+        grid-template-columns: 1fr;
+        justify-items: end;
+        min-width: 132px;
+      }
+      .before { text-align: right; }
+      .open-button { min-width: 132px; padding: 0 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="shell">
+      <div class="hero-image" aria-hidden="true">
+        <img src="assets/tech-deals-header.png" alt="" loading="eager">
+      </div>
+
+      <section class="profile" aria-labelledby="page-title">
+        <div class="profile-top">
+          <div class="mark">DA</div>
+          <div>
+            <h1 id="page-title">Dominic's Daily Amazon Deals</h1>
+            <p class="subtitle">Tap a deal to open it on Amazon.</p>
+          </div>
+        </div>
+        <div class="stat-strip" aria-label="Deal summary">
+          <div class="stat"><strong>40</strong><span>verified links</span></div>
+          <div class="stat"><strong>4</strong><span>categories</span></div>
+          <div class="stat"><strong>13</strong><span>top picks</span></div>
+        </div>
+      </section>
+
+      <nav class="toolbar" aria-label="Deal categories">
+        <div class="chips">
+          <button class="chip" type="button" data-filter="top" aria-pressed="true">Top Picks<span>13</span></button>
+        <button class="chip" type="button" data-filter="desk">Desk Setup<span>10</span></button>
+        <button class="chip" type="button" data-filter="gaming">PC Gaming<span>10</span></button>
+        <button class="chip" type="button" data-filter="smart">Smart Home<span>10</span></button>
+        <button class="chip" type="button" data-filter="power">Power + Travel<span>10</span></button>
+        </div>
+      </nav>
+
+      <section class="summary" aria-label="Category summary">
+        <h2>Today&apos;s tech deal board</h2>
+        <div class="summary-row"><span>Desk Setup</span><strong>10 deals</strong></div>
+        <div class="summary-row"><span>PC Gaming</span><strong>10 deals</strong></div>
+        <div class="summary-row"><span>Smart Home</span><strong>10 deals</strong></div>
+        <div class="summary-row"><span>Power + Travel</span><strong>10 deals</strong></div>
+      </section>
+
+      <section class="deal-list" aria-label="Amazon deal links">
+        <div class="list-status"><strong id="filter-title">Top Picks</strong><span id="result-count">13 links</span></div>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0FX5QMB6K" target="_blank" rel="noopener sponsored" data-groups="desk top" data-category="desk" aria-label="Open Amazon deal for UGREEN FineCam Pro 4K Webcam for PC, 1/2&quot; Sensor, Auto Framing, Face AE, AI Noise-Canceling Mic, Gesture Control, PDAF Auto Focus for Streaming, Conference, OBS Zoom, Switch 2, Privacy Cover &amp; Tripod">
+          <span class="deal-index">01</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>UGREEN FineCam Pro 4K Webcam for PC, 1/2&quot; Sensor, Auto Framing, Face AE, AI Noise-Canceling Mic, Gesture Control, PDAF Auto Focus for Streaming, Conference, OBS Zoom, Switch 2, Privacy Cover &amp; Tripod</strong>
+            <span class="deal-meta"><span>3.8 (259 reviews)</span><span>ASIN B0FX5QMB6K</span></span>
+            <span class="deal-signal">coupon</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$69.99</span>
+            <span class="discount">50% off</span>
+            <span class="before">Was $139.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B00N1YPXW2" target="_blank" rel="noopener sponsored" data-groups="desk top" data-category="desk" aria-label="Open Amazon deal for Logitech Creators Blue Yeti USB Microphone for PC, Mac, Gaming, Recording, Streaming, Podcasting, Studio and Computer Condenser Mic with Blue VO!CE effects, 4 Pickup Patterns, Plug and Play - Blackout">
+          <span class="deal-index">02</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>Logitech Creators Blue Yeti USB Microphone for PC, Mac, Gaming, Recording, Streaming, Podcasting, Studio and Computer Condenser Mic with Blue VO!CE effects, 4 Pickup Patterns, Plug and Play - Blackout</strong>
+            <span class="deal-meta"><span>4.6 (56700 reviews)</span><span>ASIN B00N1YPXW2</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$75.98</span>
+            <span class="discount">46% off</span>
+            <span class="before">Was $139.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0CQJVSL1Z" target="_blank" rel="noopener sponsored" data-groups="desk top" data-category="desk" aria-label="Open Amazon deal for Acer 4K Webcam for PC/Mac with All-Metal Unibody Sculpted, Sony 1/2&quot; Sensor, PDAF, 2 Noise Reduction Mics, Privacy Cover for Switch 2/Zoom/Teams/Facetime/YouTube/Google Meet">
+          <span class="deal-index">03</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>Acer 4K Webcam for PC/Mac with All-Metal Unibody Sculpted, Sony 1/2&quot; Sensor, PDAF, 2 Noise Reduction Mics, Privacy Cover for Switch 2/Zoom/Teams/Facetime/YouTube/Google Meet</strong>
+            <span class="deal-meta"><span>4.7 (42 reviews)</span><span>ASIN B0CQJVSL1Z</span></span>
+            <span class="deal-signal">Prime Day Deal / coupon</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$33.23</span>
+            <span class="discount">53% off</span>
+            <span class="before">Was $69.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0B8GRCXB6" target="_blank" rel="noopener sponsored" data-groups="desk" data-category="desk" aria-label="Open Amazon deal for Elgato Wave DX - Dynamic XLR Microphone, Cardioid pattern, Noise Rejection, speech optimised for Podcasting, Streaming, Broadcasting, No Signal Booster Required, works with any Interface, for Mac, PC">
+          <span class="deal-index">04</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>Elgato Wave DX - Dynamic XLR Microphone, Cardioid pattern, Noise Rejection, speech optimised for Podcasting, Streaming, Broadcasting, No Signal Booster Required, works with any Interface, for Mac, PC</strong>
+            <span class="deal-meta"><span>4.7 (1000 reviews)</span><span>ASIN B0B8GRCXB6</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$66.49</span>
+            <span class="discount">34% off</span>
+            <span class="before">Was $99.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0CYQ5P6T7" target="_blank" rel="noopener sponsored" data-groups="desk" data-category="desk" aria-label="Open Amazon deal for EMEET S600 4K Webcam for Streaming - Sony 1/2.55&#x27;&#x27; Sensor, PDAF Autofocus, 1080P@60FPS, 2 Noise Reduction Mics, Built-in Privacy Cover, 73° FOV, Streaming Camera for Live Commerce/Gaming/Beauty">
+          <span class="deal-index">05</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>EMEET S600 4K Webcam for Streaming - Sony 1/2.55&#x27;&#x27; Sensor, PDAF Autofocus, 1080P@60FPS, 2 Noise Reduction Mics, Built-in Privacy Cover, 73° FOV, Streaming Camera for Live Commerce/Gaming/Beauty</strong>
+            <span class="deal-meta"><span>4.5 (1900 reviews)</span><span>ASIN B0CYQ5P6T7</span></span>
+            <span class="deal-signal">Prime Day Deal / coupon</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$50.51</span>
+            <span class="discount">28% off</span>
+            <span class="before">Was $69.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0FQC1SQM2" target="_blank" rel="noopener sponsored" data-groups="desk" data-category="desk" aria-label="Open Amazon deal for EMEET C60E Dual-Camera 4K Webcam for Streaming, Wide-Angle and Telephoto Cameras, Max 11X Hybrid Zoom &amp; PDAF Autofocus, Remote Control, RGB Lighting, 2 Mics, Ideal for Livestreaming and Online Meeting">
+          <span class="deal-index">06</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>EMEET C60E Dual-Camera 4K Webcam for Streaming, Wide-Angle and Telephoto Cameras, Max 11X Hybrid Zoom &amp; PDAF Autofocus, Remote Control, RGB Lighting, 2 Mics, Ideal for Livestreaming and Online Meeting</strong>
+            <span class="deal-meta"><span>4.6 (317 reviews)</span><span>ASIN B0FQC1SQM2</span></span>
+            <span class="deal-signal">Prime Day Deal / coupon</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$51.29</span>
+            <span class="discount">27% off</span>
+            <span class="before">Was $69.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B08NPLKCTQ" target="_blank" rel="noopener sponsored" data-groups="desk" data-category="desk" aria-label="Open Amazon deal for ErGear Electric Standing Desk Legs, 4 Memory Height Settings Height Adjustable Desk Frame, Sit Stand Table Legs Up to 47.2&quot;, Ergonomic Stand up Converter Base Workstation, Black Frame Only">
+          <span class="deal-index">07</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>ErGear Electric Standing Desk Legs, 4 Memory Height Settings Height Adjustable Desk Frame, Sit Stand Table Legs Up to 47.2&quot;, Ergonomic Stand up Converter Base Workstation, Black Frame Only</strong>
+            <span class="deal-meta"><span>4.7 (1300 reviews)</span><span>ASIN B08NPLKCTQ</span></span>
+            <span class="deal-signal">Prime Day Deal / coupon</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$94.98</span>
+            <span class="discount">32% off</span>
+            <span class="before">Was $139.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0D458QDVN" target="_blank" rel="noopener sponsored" data-groups="desk" data-category="desk" aria-label="Open Amazon deal for FIFINE K688 Podcast Microphone Kit, USB/XLR Dynamic Microphone with Boom Arm for PC/XLR Mixer, Gaming Mic with Mute Button, Headphone Jack for Vocal, Voice-Over, Streaming, Music Recording -K688CT">
+          <span class="deal-index">08</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>FIFINE K688 Podcast Microphone Kit, USB/XLR Dynamic Microphone with Boom Arm for PC/XLR Mixer, Gaming Mic with Mute Button, Headphone Jack for Vocal, Voice-Over, Streaming, Music Recording -K688CT</strong>
+            <span class="deal-meta"><span>4.6 (1100 reviews)</span><span>ASIN B0D458QDVN</span></span>
+            <span class="deal-signal">Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$63.99</span>
+            <span class="discount">20% off</span>
+            <span class="before">Was $79.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0D9R5SNG1" target="_blank" rel="noopener sponsored" data-groups="desk" data-category="desk" aria-label="Open Amazon deal for Plugable USB C Hub Multiport Adapter: 9-in-1 with 140W PD Charging, 4K 60Hz HDMI, 10Gbps Data Transfer, Gigabit Ethernet, SD for USBC, USB4, Thunderbolt MacBook, Windows, Chromebook (USBC-9IN1E)">
+          <span class="deal-index">09</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>Plugable USB C Hub Multiport Adapter: 9-in-1 with 140W PD Charging, 4K 60Hz HDMI, 10Gbps Data Transfer, Gigabit Ethernet, SD for USBC, USB4, Thunderbolt MacBook, Windows, Chromebook (USBC-9IN1E)</strong>
+            <span class="deal-meta"><span>4.5 (304 reviews)</span><span>ASIN B0D9R5SNG1</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$37.46</span>
+            <span class="discount">0% off</span>
+            <span class="before">Was $19.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B09Q5V9G5P" target="_blank" rel="noopener sponsored" data-groups="desk top" data-category="desk" aria-label="Open Amazon deal for Anker USB C Hub, 11-in-1 Docking Station Dual Monitor, 10 Gbps USB-C and USB-A Data Ports, 4K HDMI and DisplayPort, 85W Power Delivery, 2 Data Ports, Ethernet, for XPS">
+          <span class="deal-index">10</span>
+          <span class="deal-copy">
+            <span class="deal-category">Desk Setup</span>
+            <strong>Anker USB C Hub, 11-in-1 Docking Station Dual Monitor, 10 Gbps USB-C and USB-A Data Ports, 4K HDMI and DisplayPort, 85W Power Delivery, 2 Data Ports, Ethernet, for XPS</strong>
+            <span class="deal-meta"><span>4.3 (2500 reviews)</span><span>ASIN B09Q5V9G5P</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$47.49</span>
+            <span class="discount">84% off</span>
+            <span class="before">Was $299.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0CVY4566H" target="_blank" rel="noopener sponsored" data-groups="gaming top" data-category="gaming" aria-label="Open Amazon deal for Elgato Stream Deck Neo – 8 Customizable Keys, 2 Touch Points, Speed Through Tasks &amp; Workflows - Control Word, Excel, PowerPoint, Teams, Zoom, Spotify and more, Drag-’n-Drop Setup - Works with Mac &amp; PC">
+          <span class="deal-index">01</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>Elgato Stream Deck Neo – 8 Customizable Keys, 2 Touch Points, Speed Through Tasks &amp; Workflows - Control Word, Excel, PowerPoint, Teams, Zoom, Spotify and more, Drag-’n-Drop Setup - Works with Mac &amp; PC</strong>
+            <span class="deal-meta"><span>4.5 (1200 reviews)</span><span>ASIN B0CVY4566H</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$66.49</span>
+            <span class="discount">34% off</span>
+            <span class="before">Was $99.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B09G6TX7L5" target="_blank" rel="noopener sponsored" data-groups="gaming top" data-category="gaming" aria-label="Open Amazon deal for KOORUI 24&quot; FHD IPS PC Monitor, 144Hz Adaptive Sync, Eye Care, Tilt Adjustable, HDMI &amp; VGA, VESA Mount for Home Office, Streaming and Casual Gaming">
+          <span class="deal-index">02</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>KOORUI 24&quot; FHD IPS PC Monitor, 144Hz Adaptive Sync, Eye Care, Tilt Adjustable, HDMI &amp; VGA, VESA Mount for Home Office, Streaming and Casual Gaming</strong>
+            <span class="deal-meta"><span>4.5 (15300 reviews)</span><span>ASIN B09G6TX7L5</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$79.99</span>
+            <span class="discount">38% off</span>
+            <span class="before">Was $129.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0DYVD72P2" target="_blank" rel="noopener sponsored" data-groups="gaming top" data-category="gaming" aria-label="Open Amazon deal for Corsair Void v2 Wireless Gaming Headset with Bluetooth for PC, PS5, PS4, Switch, Mobile – Dolby Atmos, 70 Hr Battery, Dual Wireless, Lightweight, Fast Charging – Carbon">
+          <span class="deal-index">03</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>Corsair Void v2 Wireless Gaming Headset with Bluetooth for PC, PS5, PS4, Switch, Mobile – Dolby Atmos, 70 Hr Battery, Dual Wireless, Lightweight, Fast Charging – Carbon</strong>
+            <span class="deal-meta"><span>4.2 (1800 reviews)</span><span>ASIN B0DYVD72P2</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$69.99</span>
+            <span class="discount">46% off</span>
+            <span class="before">Was $129.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B08KY2WFGP" target="_blank" rel="noopener sponsored" data-groups="gaming" data-category="gaming" aria-label="Open Amazon deal for Logitech G535 Lightspeed Wireless Gaming Headset - Lightweight on-Ear Headphones, flip to Mute mic, Stereo, USB Rechargeable - Black">
+          <span class="deal-index">04</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>Logitech G535 Lightspeed Wireless Gaming Headset - Lightweight on-Ear Headphones, flip to Mute mic, Stereo, USB Rechargeable - Black</strong>
+            <span class="deal-meta"><span>4.2 (3800 reviews)</span><span>ASIN B08KY2WFGP</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$63.65</span>
+            <span class="discount">47% off</span>
+            <span class="before">Was $119.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B098TV8C93" target="_blank" rel="noopener sponsored" data-groups="gaming" data-category="gaming" aria-label="Open Amazon deal for HyperX CloudX Stinger Core – Wireless Gaming Headset, for Xbox Series X|S and Xbox One, Memory foam &amp; Premium Leatherette Ear Cushions, Noise-Cancelling,Black">
+          <span class="deal-index">05</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>HyperX CloudX Stinger Core – Wireless Gaming Headset, for Xbox Series X|S and Xbox One, Memory foam &amp; Premium Leatherette Ear Cushions, Noise-Cancelling,Black</strong>
+            <span class="deal-meta"><span>4.4 (2900 reviews)</span><span>ASIN B098TV8C93</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$49.86</span>
+            <span class="discount">50% off</span>
+            <span class="before">Was $99.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B088MKB54B" target="_blank" rel="noopener sponsored" data-groups="gaming" data-category="gaming" aria-label="Open Amazon deal for ASUS TUF Gaming VG27VH1B 27” Curved Monitor, 1080P Full HD, 165Hz (Supports 144Hz), Extreme Low Motion Blur, Adaptive-sync, FreeSync Premium, 1ms, Eye Care, HDMI D-Sub, Black">
+          <span class="deal-index">06</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>ASUS TUF Gaming VG27VH1B 27” Curved Monitor, 1080P Full HD, 165Hz (Supports 144Hz), Extreme Low Motion Blur, Adaptive-sync, FreeSync Premium, 1ms, Eye Care, HDMI D-Sub, Black</strong>
+            <span class="deal-meta"><span>4.7 (2400 reviews)</span><span>ASIN B088MKB54B</span></span>
+            <span class="deal-signal">Prime Day Deal</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$113.05</span>
+            <span class="discount">37% off</span>
+            <span class="before">Was $179.00</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0D3PKPZCK" target="_blank" rel="noopener sponsored" data-groups="gaming" data-category="gaming" aria-label="Open Amazon deal for KTC 27 Inch QHD Computer Monitor, 2K 144Hz 1440P Gaming Monitor, Eye Care PC Monitor for Office Gamers, HDMI/DP, FreeSync &amp; G-Sync, HDR10, VESA, Tilt Adjustable, H27T27S">
+          <span class="deal-index">07</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>KTC 27 Inch QHD Computer Monitor, 2K 144Hz 1440P Gaming Monitor, Eye Care PC Monitor for Office Gamers, HDMI/DP, FreeSync &amp; G-Sync, HDR10, VESA, Tilt Adjustable, H27T27S</strong>
+            <span class="deal-meta"><span>4.6 (1800 reviews)</span><span>ASIN B0D3PKPZCK</span></span>
+            <span class="deal-signal">Prime Day Deal / coupon</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$98.98</span>
+            <span class="discount">29% off</span>
+            <span class="before">Was $139.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B088VMY23M" target="_blank" rel="noopener sponsored" data-groups="gaming" data-category="gaming" aria-label="Open Amazon deal for Sceptre IPS 24” Gaming Monitor 165Hz 144Hz Full HD (1920 x 1080) FreeSync Eye Care FPS RTS DisplayPort HDMI Build-in Speakers, Machine Black 2020 (E248B-FPT168),IPS 24&quot; 165Hz">
+          <span class="deal-index">08</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>Sceptre IPS 24” Gaming Monitor 165Hz 144Hz Full HD (1920 x 1080) FreeSync Eye Care FPS RTS DisplayPort HDMI Build-in Speakers, Machine Black 2020 (E248B-FPT168),IPS 24&quot; 165Hz</strong>
+            <span class="deal-meta"><span>4.5 (5800 reviews)</span><span>ASIN B088VMY23M</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$87.97</span>
+            <span class="discount">25% off</span>
+            <span class="before">Was $117.97</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0FDVYVDF9" target="_blank" rel="noopener sponsored" data-groups="gaming" data-category="gaming" aria-label="Open Amazon deal for KOORUI 24 Inch Gaming Monitor 144Hz Full HD 1920 x 1080p IPS Ultra-Slim Display with HDMI VGA, Adaptive Sync, 99% SRGB, VESA 100x100mm, Eye Care, Tilt, HDMI 2.0, Black, E2411K">
+          <span class="deal-index">09</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>KOORUI 24 Inch Gaming Monitor 144Hz Full HD 1920 x 1080p IPS Ultra-Slim Display with HDMI VGA, Adaptive Sync, 99% SRGB, VESA 100x100mm, Eye Care, Tilt, HDMI 2.0, Black, E2411K</strong>
+            <span class="deal-meta"><span>4.4 (10800 reviews)</span><span>ASIN B0FDVYVDF9</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$85.48</span>
+            <span class="discount">34% off</span>
+            <span class="before">Was $129.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0B6DFG1FQ" target="_blank" rel="noopener sponsored" data-groups="gaming" data-category="gaming" aria-label="Open Amazon deal for Acer Nitro KG241Y Sbiip 23.8” Full HD (1920 x 1080) VA Gaming Monitor | AMD FreeSync Premium Technology | 165Hz Refresh Rate | 1ms (VRB) | ZeroFrame Design | 1 x Display Port 1.2 &amp; 2 x HDMI 2.0,Black">
+          <span class="deal-index">10</span>
+          <span class="deal-copy">
+            <span class="deal-category">PC Gaming</span>
+            <strong>Acer Nitro KG241Y Sbiip 23.8” Full HD (1920 x 1080) VA Gaming Monitor | AMD FreeSync Premium Technology | 165Hz Refresh Rate | 1ms (VRB) | ZeroFrame Design | 1 x Display Port 1.2 &amp; 2 x HDMI 2.0,Black</strong>
+            <span class="deal-meta"><span>4.5 4.5 out of 5 stars ((4,199) reviews)</span><span>ASIN B0B6DFG1FQ</span></span>
+            <span class="deal-signal">Prime Day</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$109.99</span>
+            <span class="discount">36% off</span>
+            <span class="before">Was $172.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B085VM9ZDD" target="_blank" rel="noopener sponsored" data-groups="smart top" data-category="smart" aria-label="Open Amazon deal for Amazon eero 6 mesh wifi router - Supports internet plans up to 900 Mbps, Coverage up to 1,500 sq. ft., Connect 75+ devices, 1-pack">
+          <span class="deal-index">01</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>Amazon eero 6 mesh wifi router - Supports internet plans up to 900 Mbps, Coverage up to 1,500 sq. ft., Connect 75+ devices, 1-pack</strong>
+            <span class="deal-meta"><span>4.5 (28800 reviews)</span><span>ASIN B085VM9ZDD</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$54.99</span>
+            <span class="discount">39% off</span>
+            <span class="before">Was $89.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0DW27FNG3" target="_blank" rel="noopener sponsored" data-groups="smart top" data-category="smart" aria-label="Open Amazon deal for NETGEAR Nighthawk Dual-Band WiFi 7 Router (RS90) – Router Only, BE3600 Wireless Speed (up to 3.6 Gbps) - Covers up to 2,000 sq. ft., 50 Devices – 2.5 Gig Internet Port - Free Expert Help">
+          <span class="deal-index">02</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>NETGEAR Nighthawk Dual-Band WiFi 7 Router (RS90) – Router Only, BE3600 Wireless Speed (up to 3.6 Gbps) - Covers up to 2,000 sq. ft., 50 Devices – 2.5 Gig Internet Port - Free Expert Help</strong>
+            <span class="deal-meta"><span>4.2 (1200 reviews)</span><span>ASIN B0DW27FNG3</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$83.02</span>
+            <span class="discount">36% off</span>
+            <span class="before">Was $129.00</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0BCQT2FJJ" target="_blank" rel="noopener sponsored" data-groups="smart top" data-category="smart" aria-label="Open Amazon deal for Google Nest WiFi Pro - Wi-Fi 6E - Reliable Home Wi-Fi System with Fast Speed and Whole Home Coverage - Mesh Router - Snow">
+          <span class="deal-index">03</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>Google Nest WiFi Pro - Wi-Fi 6E - Reliable Home Wi-Fi System with Fast Speed and Whole Home Coverage - Mesh Router - Snow</strong>
+            <span class="deal-meta"><span>4.0 (2400 reviews)</span><span>ASIN B0BCQT2FJJ</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$85.49</span>
+            <span class="discount">57% off</span>
+            <span class="before">Was $199.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0CZ7LYHLG" target="_blank" rel="noopener sponsored" data-groups="smart" data-category="smart" aria-label="Open Amazon deal for TP-Link Deco XE70 Pro AXE4900 Tri-Band WiFi 6E Mesh WiFi Router - 1 x 2.5bps WAN/LAN Port, 2 x 1 Gbps LAN Ports, 4.9 Gbps Wi-Fi 2,900 Sq. Ft Coverage, Connect up to 200 Devices, 1-Pack">
+          <span class="deal-index">04</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>TP-Link Deco XE70 Pro AXE4900 Tri-Band WiFi 6E Mesh WiFi Router - 1 x 2.5bps WAN/LAN Port, 2 x 1 Gbps LAN Ports, 4.9 Gbps Wi-Fi 2,900 Sq. Ft Coverage, Connect up to 200 Devices, 1-Pack</strong>
+            <span class="deal-meta"><span>4.4 (967 reviews)</span><span>ASIN B0CZ7LYHLG</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$84.99</span>
+            <span class="discount">35% off</span>
+            <span class="before">Was $129.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0DC99N2T8" target="_blank" rel="noopener sponsored" data-groups="smart" data-category="smart" aria-label="Open Amazon deal for TP-Link Dual-Band BE3600 Wi-Fi 7 Router Archer BE230 | 4-Stream | 2×2.5G + 3×1G Ports, USB 3.0, 2.0 GHz Quad Core, 4 Antennas | VPN, EasyMesh, HomeShield, MLO, Private IOT | Free Expert Support">
+          <span class="deal-index">05</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>TP-Link Dual-Band BE3600 Wi-Fi 7 Router Archer BE230 | 4-Stream | 2×2.5G + 3×1G Ports, USB 3.0, 2.0 GHz Quad Core, 4 Antennas | VPN, EasyMesh, HomeShield, MLO, Private IOT | Free Expert Support</strong>
+            <span class="deal-meta"><span>4.3 (1200 reviews)</span><span>ASIN B0DC99N2T8</span></span>
+            <span class="deal-signal">Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$79.99</span>
+            <span class="discount">33% off</span>
+            <span class="before">Was $119.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0FHZGXZH7" target="_blank" rel="noopener sponsored" data-groups="smart" data-category="smart" aria-label="Open Amazon deal for TP-Link Roam 7 BE3600 Wi-Fi 7 Portable Travel Router | Dual-Band, 2.5G Port, USB 3.0 | Multi-Modes in One | OpenVPN, WireGuard® | Public WiFi Sharing for Hotel/Cruise/RV/Plane | No 6 GHz | TL-WR3602BE">
+          <span class="deal-index">06</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>TP-Link Roam 7 BE3600 Wi-Fi 7 Portable Travel Router | Dual-Band, 2.5G Port, USB 3.0 | Multi-Modes in One | OpenVPN, WireGuard® | Public WiFi Sharing for Hotel/Cruise/RV/Plane | No 6 GHz | TL-WR3602BE</strong>
+            <span class="deal-meta"><span>4.4 (218 reviews)</span><span>ASIN B0FHZGXZH7</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$89.99</span>
+            <span class="discount">31% off</span>
+            <span class="before">Was $129.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0DQNV546Z" target="_blank" rel="noopener sponsored" data-groups="smart" data-category="smart" aria-label="Open Amazon deal for TP-Link Deco 7 BE23 Dual-Band BE3600 WiFi 7 Mesh Wi-Fi Router | 4-Stream 3.6 Gbps,160 Mhz | Covers up to 2,500 Sq.Ft | 2× 2.5G Ports Wired Backhaul | VPN, MLO, HomeShield, Free Expert Help, 1-Pack">
+          <span class="deal-index">07</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>TP-Link Deco 7 BE23 Dual-Band BE3600 WiFi 7 Mesh Wi-Fi Router | 4-Stream 3.6 Gbps,160 Mhz | Covers up to 2,500 Sq.Ft | 2× 2.5G Ports Wired Backhaul | VPN, MLO, HomeShield, Free Expert Help, 1-Pack</strong>
+            <span class="deal-meta"><span>4.4 (602 reviews)</span><span>ASIN B0DQNV546Z</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$79.99</span>
+            <span class="discount">20% off</span>
+            <span class="before">Was $99.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0DKVKLJX3" target="_blank" rel="noopener sponsored" data-groups="smart" data-category="smart" aria-label="Open Amazon deal for TP-Link Deco 7 BE25 Dual-Band BE5000 WiFi 7 Mesh Wi-Fi Router | 4-Stream, 240 Mhz Channels | Covers up to 2,600 Sq.Ft | 2X 2.5G Ports Wired Backhaul | VPN, MLO, HomeShield, Free Expert Help, 1-Pack">
+          <span class="deal-index">08</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>TP-Link Deco 7 BE25 Dual-Band BE5000 WiFi 7 Mesh Wi-Fi Router | 4-Stream, 240 Mhz Channels | Covers up to 2,600 Sq.Ft | 2X 2.5G Ports Wired Backhaul | VPN, MLO, HomeShield, Free Expert Help, 1-Pack</strong>
+            <span class="deal-meta"><span>4.3 (1700 reviews)</span><span>ASIN B0DKVKLJX3</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$89.99</span>
+            <span class="discount">31% off</span>
+            <span class="before">Was $129.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B085WSCTS4" target="_blank" rel="noopener sponsored" data-groups="smart" data-category="smart" aria-label="Open Amazon deal for Amazon eero 6 mesh wifi system - Supports internet plans up to 500 Mbps, Coverage up to 4,500 sq. ft., Connect 75+ devices, 3-pack (1 router + 2 extenders)">
+          <span class="deal-index">09</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>Amazon eero 6 mesh wifi system - Supports internet plans up to 500 Mbps, Coverage up to 4,500 sq. ft., Connect 75+ devices, 3-pack (1 router + 2 extenders)</strong>
+            <span class="deal-meta"><span>4.5 (28800 reviews)</span><span>ASIN B085WSCTS4</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$129.99</span>
+            <span class="discount">35% off</span>
+            <span class="before">Was $199.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B076JLJVTG" target="_blank" rel="noopener sponsored" data-groups="smart" data-category="smart" aria-label="Open Amazon deal for Tenda Nova Mesh WiFi System MW6 - Covers up to 4-6 Bedroom Houses- AC1200 Whole Home WiFi Mesh System - Gigabit Dual-Band Mesh Network - Replaces Wireless Router and WiFi Extender - 3-Pack">
+          <span class="deal-index">10</span>
+          <span class="deal-copy">
+            <span class="deal-category">Smart Home</span>
+            <strong>Tenda Nova Mesh WiFi System MW6 - Covers up to 4-6 Bedroom Houses- AC1200 Whole Home WiFi Mesh System - Gigabit Dual-Band Mesh Network - Replaces Wireless Router and WiFi Extender - 3-Pack</strong>
+            <span class="deal-meta"><span>4.2 (9000 reviews)</span><span>ASIN B076JLJVTG</span></span>
+            <span class="deal-signal">Prime Day Deal / coupon</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$71.19</span>
+            <span class="discount">36% off</span>
+            <span class="before">Was $110.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0D3XR6S47" target="_blank" rel="noopener sponsored" data-groups="power top" data-category="power" aria-label="Open Amazon deal for UGREEN Uno 100W USB C Charger, 4-Port GaN Fast Charger with LED Screen, Tech Gifts for Men Women, for MacBook Pro/Air/Neo 2026, iPad Pro, iPhone 17/16, Galaxy S26/S25, Pixel 10/9, Steam Deck, ROG Ally">
+          <span class="deal-index">01</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>UGREEN Uno 100W USB C Charger, 4-Port GaN Fast Charger with LED Screen, Tech Gifts for Men Women, for MacBook Pro/Air/Neo 2026, iPad Pro, iPhone 17/16, Galaxy S26/S25, Pixel 10/9, Steam Deck, ROG Ally</strong>
+            <span class="deal-meta"><span>4.7 (1600 reviews)</span><span>ASIN B0D3XR6S47</span></span>
+            <span class="deal-signal">Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$54.99</span>
+            <span class="discount">31% off</span>
+            <span class="before">Was $79.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0DMDJBCDP" target="_blank" rel="noopener sponsored" data-groups="power top" data-category="power" aria-label="Open Amazon deal for Anker Laptop Power Bank,25,000mAh Portable Charger with 165W Total Output,3 USB-C Ports (100W Max Each),Built-in Retractable Cables,Flight-Ready,for iPhone 17/16 Series,MacBook,Samsung,and More">
+          <span class="deal-index">02</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>Anker Laptop Power Bank,25,000mAh Portable Charger with 165W Total Output,3 USB-C Ports (100W Max Each),Built-in Retractable Cables,Flight-Ready,for iPhone 17/16 Series,MacBook,Samsung,and More</strong>
+            <span class="deal-meta"><span>4.5 (9900 reviews)</span><span>ASIN B0DMDJBCDP</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$91.19</span>
+            <span class="discount">0% off</span>
+            <span class="before">Was $89.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0DSPXHFBM" target="_blank" rel="noopener sponsored" data-groups="power top" data-category="power" aria-label="Open Amazon deal for UGREEN Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger, 100W Input, Fast Charging for MacBook Pro/Air/iPhone 17/16/iPad Pro/Galaxy S26 Ultra/Dell/HP and More">
+          <span class="deal-index">03</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>UGREEN Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger, 100W Input, Fast Charging for MacBook Pro/Air/iPhone 17/16/iPad Pro/Galaxy S26 Ultra/Dell/HP and More</strong>
+            <span class="deal-meta"><span>4.6 (1700 reviews)</span><span>ASIN B0DSPXHFBM</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$66.47</span>
+            <span class="discount">34% off</span>
+            <span class="before">Was $99.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0CZ6LXL8R" target="_blank" rel="noopener sponsored" data-groups="power" data-category="power" aria-label="Open Amazon deal for Anker Prime Charger, 100W 3-Port GaN USB C Charger Block, Fast Charging wall Charger, Foldable and Compact for MacBook, iPad, iPhone 17 Series, Galaxy S24/S23, and More">
+          <span class="deal-index">04</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>Anker Prime Charger, 100W 3-Port GaN USB C Charger Block, Fast Charging wall Charger, Foldable and Compact for MacBook, iPad, iPhone 17 Series, Galaxy S24/S23, and More</strong>
+            <span class="deal-meta"><span>4.7 (2500 reviews)</span><span>ASIN B0CZ6LXL8R</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$37.98</span>
+            <span class="discount">46% off</span>
+            <span class="before">Was $69.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B091Z6JNX4" target="_blank" rel="noopener sponsored" data-groups="power" data-category="power" aria-label="Open Amazon deal for UGREEN Nexode 100W GaN USB C Charger, 4-Port Compact Foldable Fast Laptop Charger Power Adapter for MacBook Pro/Air, iPad Pro, iPhone 17/16/15 Series, Galaxy S25/S24, Pixel 10/9, Steam Deck, Pixelbook">
+          <span class="deal-index">05</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>UGREEN Nexode 100W GaN USB C Charger, 4-Port Compact Foldable Fast Laptop Charger Power Adapter for MacBook Pro/Air, iPad Pro, iPhone 17/16/15 Series, Galaxy S25/S24, Pixel 10/9, Steam Deck, Pixelbook</strong>
+            <span class="deal-meta"><span>4.6 (10800 reviews)</span><span>ASIN B091Z6JNX4</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$31.57</span>
+            <span class="discount">43% off</span>
+            <span class="before">Was $54.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0C3GTMX5M" target="_blank" rel="noopener sponsored" data-groups="power" data-category="power" aria-label="Open Amazon deal for UGREEN 20000mAh 100W Power Bank, Nexode Portable Charger USB C 3-Port PD Fast Charging Battery Pack Digital Display for iPhone 17/16, MacBook, iPad, Galaxy S26 Ultra, Steam Deck, Dell XPS and More">
+          <span class="deal-index">06</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>UGREEN 20000mAh 100W Power Bank, Nexode Portable Charger USB C 3-Port PD Fast Charging Battery Pack Digital Display for iPhone 17/16, MacBook, iPad, Galaxy S26 Ultra, Steam Deck, Dell XPS and More</strong>
+            <span class="deal-meta"><span>4.5 (5100 reviews)</span><span>ASIN B0C3GTMX5M</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$49.62</span>
+            <span class="discount">38% off</span>
+            <span class="before">Was $79.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0F9NK4M7Q" target="_blank" rel="noopener sponsored" data-groups="power" data-category="power" aria-label="Open Amazon deal for Anker Prime Charger,160W 3-Port Compact GaN USB C Charger,Smart Display,Touch Control,Up to 140W Fast Charging for One Device,for MacBook Pro,Laptop,iPhone 17 Series(Cable Not Included,Non-Battery)">
+          <span class="deal-index">07</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>Anker Prime Charger,160W 3-Port Compact GaN USB C Charger,Smart Display,Touch Control,Up to 140W Fast Charging for One Device,for MacBook Pro,Laptop,iPhone 17 Series(Cable Not Included,Non-Battery)</strong>
+            <span class="deal-meta"><span>4.7 (871 reviews)</span><span>ASIN B0F9NK4M7Q</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$99.99</span>
+            <span class="discount">33% off</span>
+            <span class="before">Was $149.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B09YLWLFLF" target="_blank" rel="noopener sponsored" data-groups="power" data-category="power" aria-label="Open Amazon deal for HOWEASY Portable Power Station,120W(240W Peak) Solar Generator,88Wh Lithium Battery Power with 110V AC Outlet/DC/USB/LED Light for Outdoor Camping Trip Hunting Emergency(Solar Panel Optional)">
+          <span class="deal-index">08</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>HOWEASY Portable Power Station,120W(240W Peak) Solar Generator,88Wh Lithium Battery Power with 110V AC Outlet/DC/USB/LED Light for Outdoor Camping Trip Hunting Emergency(Solar Panel Optional)</strong>
+            <span class="deal-meta"><span>4.3 (1900 reviews)</span><span>ASIN B09YLWLFLF</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$56.97</span>
+            <span class="discount">37% off</span>
+            <span class="before">Was $89.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0GJBLLRDW" target="_blank" rel="noopener sponsored" data-groups="power" data-category="power" aria-label="Open Amazon deal for Portable Power Station 300W, 600W Peak Backup LiFePO4 Battery 192Wh Solar Generator with 120V Pure Sine Wave AC Outlet for Camping Emergency Travel Outdoor Home Blackout">
+          <span class="deal-index">09</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>Portable Power Station 300W, 600W Peak Backup LiFePO4 Battery 192Wh Solar Generator with 120V Pure Sine Wave AC Outlet for Camping Emergency Travel Outdoor Home Blackout</strong>
+            <span class="deal-meta"><span>4.4 (52 reviews)</span><span>ASIN B0GJBLLRDW</span></span>
+            <span class="deal-signal">coupon</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$99.99</span>
+            <span class="discount">35% off</span>
+            <span class="before">Was $155.00</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="deal-card" href="https://www.amazon.com/dp/B0DDQ71B9P" target="_blank" rel="noopener sponsored" data-groups="power" data-category="power" aria-label="Open Amazon deal for Anker MagSafe Charger Compatible, MagGo 3-in-1 Charging Station, Nano Charging Stand, Qi2 Certified 15W Magnetic Wireless Charger Dock, for iPhone 17/16/15/14, Apple Watch, AirPods (Adapter Included)">
+          <span class="deal-index">10</span>
+          <span class="deal-copy">
+            <span class="deal-category">Power + Travel</span>
+            <strong>Anker MagSafe Charger Compatible, MagGo 3-in-1 Charging Station, Nano Charging Stand, Qi2 Certified 15W Magnetic Wireless Charger Dock, for iPhone 17/16/15/14, Apple Watch, AirPods (Adapter Included)</strong>
+            <span class="deal-meta"><span>4.6 (2000 reviews)</span><span>ASIN B0DDQ71B9P</span></span>
+            <span class="deal-signal">Prime Day Deal / Exclusive Prime price</span>
+          </span>
+          <span class="price-block">
+            <span class="price">$59.99</span>
+            <span class="discount">33% off</span>
+            <span class="before">Was $89.99</span>
+          </span>
+          <span class="open-button">Open Amazon
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.25 4.75h8v8M15.25 4.75 4.75 15.25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </section>
+
+      <p class="footer-note">Prices can change. As an Amazon Associate I may earn from qualifying purchases. Links are based on the cart-verified Amazon report from June 26, 2026.</p>
+    </div>
+  </main>
+
+  <script>
+    const affiliateTag = "";
+    const cards = Array.from(document.querySelectorAll(".deal-card"));
+    const buttons = Array.from(document.querySelectorAll(".chip"));
+    const title = document.getElementById("filter-title");
+    const count = document.getElementById("result-count");
+    const labels = {
+      top: "Top Picks",
+      desk: "Desk Setup",
+      gaming: "PC Gaming",
+      smart: "Smart Home",
+      power: "Power + Travel"
+    };
+
+    function withAffiliateTag(url) {
+      if (!affiliateTag) return url;
+      const next = new URL(url);
+      next.searchParams.set("tag", affiliateTag);
+      return next.toString();
+    }
+
+    cards.forEach((card) => {
+      card.href = withAffiliateTag(card.href);
+    });
+
+    function applyFilter(group) {
+      let visible = 0;
+      cards.forEach((card) => {
+        const groups = card.dataset.groups.split(" ");
+        const show = groups.includes(group);
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.filter === group));
+      });
+      title.textContent = labels[group] || "Deals";
+      count.textContent = `${visible} links`;
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => applyFilter(button.dataset.filter));
+    });
+
+    applyFilter("top");
+  </script>
+</body>
+</html>

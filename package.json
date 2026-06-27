@@ -1,0 +1,13 @@
+{
+  "name": "goolride-amazon-deals",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static link-tree page for Goolride daily Amazon deals.",
+  "scripts": {
+    "dev": "wrangler pages dev public --port 4177",
+    "deploy": "wrangler pages deploy public --project-name goolride-amazon-deals --branch main"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}
